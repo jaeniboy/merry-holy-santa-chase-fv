@@ -1,9 +1,9 @@
 <script>
     import {push} from 'svelte-spa-router'
 
-    let time = 1000*20;
-    // let time = 1000*120
+    let time = 1000*120;
     let interval = 1000;
+    // let time = 1000*120
     
     const twoDigits = (number) => {
         return number.toLocaleString('en-US', {

@@ -7,6 +7,7 @@
   // Backend hinzufügen
   // Datenbank anschließen
   // Spielanleitung hinzufügen (evtl. mit Cookie?)
+  // Impressum hinzufügen
   
   // === bugs ===
   // Spielfeld tatsächlich responsive machen

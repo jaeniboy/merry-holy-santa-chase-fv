@@ -10,6 +10,7 @@
   export const increment = () => {
     CountStore.update((n) => n + 1)
   }
+  
   export const decrement = () => {
     CountStore.update((n) => n - 1)
   }

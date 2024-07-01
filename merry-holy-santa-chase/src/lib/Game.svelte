@@ -5,8 +5,10 @@
   const numFields = 35
   const fields = [...Array(numFields).keys()];
   let currentFieldID = Number;
-  const soundSuccess = new Audio("/ding.mp3")
+  const soundSuccess = new Audio("/ding_short.mp3")
   const soundError = new Audio("/error.mp3")
+  // soundSuccess.preload = "auto"
+  // soundError.preload = "auto"
   let interval = 3000
   const minInterval = 1000
 
@@ -17,7 +19,6 @@
 
   const getEmoji = () => {
     const rand = Math.random();
-    console.log(rand)
     const emojis = rand >= 0.5 ? goodEmojis : badEmojis;
     const randIndex = Math.floor(Math.random() * emojis.length);
     return emojis[randIndex];
@@ -36,7 +37,6 @@
 
     // clear all fields
     clearFields()
-
     const fieldSelected = document.getElementById(String(newFieldID));
     fieldSelected.innerText = getEmoji();
     fieldSelected.onclick = (e) => {
@@ -67,20 +67,24 @@
     }
   }
 
-  const startGame = () => {
+  const runLoop = () => {
     setTimeout(()=>{
       showEmoji()
-      startGame();
+      runLoop();
     }, interval);
   }
-  
-  startGame()
+
+  // waits until board is fully loaded
+  const loaded = () => {
+    showEmoji()
+    runLoop()
+  }
 </script>
 
 <main>
     <Counter bind:this={counter}/>
     <Countdown />
-    <div id="board">
+    <div id="board" use:loaded>
         {#each fields as field}
         <div id="{field}" class="game-field">{field}</div>
         {/each}
