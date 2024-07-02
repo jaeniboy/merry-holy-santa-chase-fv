@@ -3,13 +3,13 @@
   // === todos ===
   // Emojis durch SVG-Grafiken ersetzen
   // Rangliste hinzufügen
-  // Hintergrundmusik hinzufügen
   // Backend hinzufügen
   // Datenbank anschließen
   // Spielanleitung hinzufügen (evtl. mit Cookie?)
   // Impressum hinzufügen
   
   // === bugs ===
+  // Hintergrundmusik nach Countdown stoppen
   // Spielfeld tatsächlich responsive machen
   // zweimaliges Klicken auf gutes Emoji funktioniert nicht (evtl. Sound zu lang)
 

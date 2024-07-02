@@ -5,13 +5,20 @@
   const numFields = 35
   const fields = [...Array(numFields).keys()];
   let currentFieldID = Number;
-  const soundSuccess = new Audio("/ding_short.mp3")
-  const soundError = new Audio("/error.mp3")
-  // soundSuccess.preload = "auto"
-  // soundError.preload = "auto"
   let interval = 3000
   const minInterval = 1000
+  
+  // sound effects and background music
+  const soundSuccess = new Audio("/ding_a.mp3")
+  const soundError = new Audio("/error.mp3")
 
+  const speedInterval = 0.2;
+  const maxSpeed = 2;
+  const backgroundMusic = new Audio("/silent_night.mp3")
+  backgroundMusic.volume = 0.2;
+  backgroundMusic.loop = true;
+  backgroundMusic.play()
+  
   import Counter from "./Counter.svelte"
   let counter;
 
@@ -28,27 +35,31 @@
     let newFieldID = Number;
     // avoid field repetition
     while (true) {
-      newFieldID = Math.floor(Math.random() * numFields)
+      newFieldID = Math.floor(Math.random() * numFields);
       if (newFieldID != currentFieldID) {
         break;
       }
     }
     currentFieldID = newFieldID
-
-    // clear all fields
     clearFields()
+
     const fieldSelected = document.getElementById(String(newFieldID));
     fieldSelected.innerText = getEmoji();
     fieldSelected.onclick = (e) => {
       if (goodEmojis.includes(e.target.innerText)) {
+        soundSuccess.pause();
+        soundSuccess.currentTime = 0;
         soundSuccess.play();
         counter.increment();
         setInterval();
+        seedUpMusic();
       } else {
+        soundError.pause();
+        soundError.currentTime = 0;
         soundError.play();
         counter.decrement();
       }
-      e.target.innerText = e.target.id;
+      e.target.innerText = "";
       e.target.onclick = null;
     }
   }
@@ -56,9 +67,20 @@
   const clearFields = () => {
     const allFields = document.getElementsByClassName("game-field")
     for (const field of allFields) {
-      field.innerText = field.id;
+      field.innerText = "";
       field.onclick = null;
     }
+  }
+
+  const seedUpMusic = () => {
+    const pr = backgroundMusic.playbackRate
+    if (pr < maxSpeed) {
+      backgroundMusic.playbackRate = pr + speedInterval;
+    }
+  }
+
+  const stopMusic = () => {
+    backgroundMusic.pause()
   }
 
   const setInterval = () => {
@@ -83,10 +105,10 @@
 
 <main>
     <Counter bind:this={counter}/>
-    <Countdown />
+    <Countdown stopMusic={()=>stopMusic()}/>
     <div id="board" use:loaded>
         {#each fields as field}
-        <div id="{field}" class="game-field">{field}</div>
+        <div id="{field}" class="game-field"></div>
         {/each}
     </div>
 </main>
@@ -98,8 +120,9 @@
     }
   
     #board {
-      background-color: red;
+      /* background-color: red; */
       height: 80vh;
+      max-height: calc((100vw/5)*7);
       margin-top: 15%;
       width: auto;
       aspect-ratio: 5/7;
@@ -118,12 +141,12 @@
       overflow: hidden;
     }
   
-    .game-field:nth-child(odd) {
+    /* .game-field:nth-child(odd) {
       background-color: lightgray;
     }
   
     .game-field:nth-child(even) {
       background-color: gray;
-    }
+    } */
    
   </style>

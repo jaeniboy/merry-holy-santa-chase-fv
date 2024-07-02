@@ -1,7 +1,8 @@
 <script>
     import {push} from 'svelte-spa-router'
+    export let stopMusic;
 
-    let time = 1000*120;
+    let time = 1000*3;
     let interval = 1000;
     // let time = 1000*120
     
@@ -30,6 +31,7 @@
                 startCountdown();
             } else {
                 console.log("Done!")
+                stopMusic();
                 push('/gameover')
             }
         }, interval)
