@@ -2,7 +2,7 @@
     import {push} from 'svelte-spa-router'
     export let stopMusic;
 
-    let time = 1000*3;
+    let time = 1000*120;
     let interval = 1000;
     // let time = 1000*120
     
@@ -17,7 +17,7 @@
         let seconds = ms / 1000;
         const minutes = Math.floor(seconds / 60);
         seconds = seconds % 60;
-        const timeString = twoDigits(minutes) + ":" + twoDigits(seconds)
+        const timeString = twoDigits(minutes) + ":" + twoDigits(seconds);
         return timeString
     }
     
