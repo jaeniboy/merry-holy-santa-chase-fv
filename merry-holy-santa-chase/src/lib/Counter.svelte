@@ -19,7 +19,7 @@
 </script>
 
 <div id="counter">
-  count is {count}
+  Punkte: {count}
 </div>
 
 <style>

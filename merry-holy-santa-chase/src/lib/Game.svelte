@@ -32,7 +32,7 @@
   }
 
   const showEmoji = () => {
-    let newFieldID = Number;
+    let newFieldID //= Number;
     // avoid field repetition
     while (true) {
       newFieldID = Math.floor(Math.random() * numFields);
@@ -130,7 +130,7 @@
     }
   
     .game-field {
-      font-size: 3em;
+      font-size: 5em;
       float: left;
       height: 14.28571428571429%;
       width: auto;
