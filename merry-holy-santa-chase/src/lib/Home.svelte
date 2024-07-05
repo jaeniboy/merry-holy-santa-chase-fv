@@ -1,5 +1,6 @@
 <script>
     import {PlayerName} from "./store.js"
+    import {push} from 'svelte-spa-router'
     const setPlayerName = (e) => {
         console.log(e.target.value)
         PlayerName.set(e.target.value)
@@ -12,7 +13,7 @@
     <input on:input={(e) => setPlayerName(e)}/>
     <div>Die besten Spieler kommen später in die Top-Ten!</div>
 </div>
-<button href="#/game">Spiel starten!</button>
+<button on:click|preventDefault={()=>push("#/game")}>Spiel starten!</button>
 
 <style>
     input {

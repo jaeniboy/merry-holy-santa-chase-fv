@@ -1,29 +1,16 @@
 <script>
 
-    let scores = [
-        {"name":"Gisi","score": 34, "new": false},
-        {"name":"Michael","score": 45, "new": false},
-        {"name":"Miriam","score": 64, "new": false},
-        {"name":"Lucy","score": 23, "new": false},
-        {"name":"Elli","score": 56, "new": false},
-        {"name":"Gerd","score": 34, "new": false},
-        {"name":"Hans","score": 14, "new": false},
-        {"name":"Gabi","score": 55, "new": false},
-    ]
-    
     export let gameResult
-    scores = [...scores, gameResult]
-
-    const ranking = scores.sort((a,b) => {return b.score - a.score})
+    export let topten
 
 </script>
 
 
-<div>
+<div id="ranking">
     <h2>High-Score</h2>
     <div id="high-score">
         <table>
-            {#each ranking as entry, key}
+            {#each topten as entry, key}
             <tr id={entry.new ? "new-entry" : ""}>
                 <td>{key + 1}.</td>
                 <td>{entry.name}</td>
@@ -35,6 +22,10 @@
 </div>
 
 <style>
+
+    #ranking {
+        margin: 4em 0em;
+    }
 
     #high-score {
         margin: 0 auto;
