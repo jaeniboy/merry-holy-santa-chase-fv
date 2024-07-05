@@ -15,7 +15,6 @@
     CountStore.update((n) => n - 1)
   }
 
-
 </script>
 
 <div id="counter">
