@@ -8,7 +8,20 @@
 
 <h1>Merry Holy Santa Chase</h1>
 <div>
-    <label>Bitte gib hier deinen Namen ein:</label>
+    <div>Bitte gib hier deinen Namen ein:</div>
     <input on:input={(e) => setPlayerName(e)}/>
+    <div>Die besten Spieler kommen später in die Top-Ten!</div>
 </div>
-<a href="#/game">Spiel starten!</a>
+<button href="#/game">Spiel starten!</button>
+
+<style>
+    input {
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+
+    button {
+        margin-top: 2em;
+        color: #646cff;
+    }
+</style>
