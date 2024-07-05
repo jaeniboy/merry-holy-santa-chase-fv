@@ -2,16 +2,13 @@
 
   // === todos ===
   // Emojis durch SVG-Grafiken ersetzen
-  // Rangliste hinzufügen
   // Backend hinzufügen
   // Datenbank anschließen
   // Spielanleitung hinzufügen (evtl. mit Cookie?)
-  // Impressum hinzufügen
+  // Impressum mit Credits hinzufügen
   
   // === bugs ===
-  // Hintergrundmusik nach Countdown stoppen
   // Spielfeld tatsächlich responsive machen
-  // zweimaliges Klicken auf gutes Emoji funktioniert nicht (evtl. Sound zu lang)
 
   import Router from 'svelte-spa-router'
   import Home from "./lib/Home.svelte"

@@ -1,6 +1,5 @@
 <script>
 
-    export let gameResult
     export let topten
 
 </script>
