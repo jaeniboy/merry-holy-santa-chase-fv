@@ -2,7 +2,7 @@ import {writable} from "svelte/store";
 
 export const CountStore = writable(0);
 export const PlayerName = writable("");
-export const IsTopTen = writable(false);
+// export const IsTopTen = writable(false);
 export const Scores = writable([
     {"name":"Gisi","score": 34, "new": false},
     {"name":"Michael","score": 45, "new": false},

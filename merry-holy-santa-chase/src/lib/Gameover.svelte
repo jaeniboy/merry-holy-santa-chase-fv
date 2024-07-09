@@ -27,11 +27,11 @@
 </script>
 
 <div>
-    {#if topten}
+    {#if isTopTen}
         <h1>Super {name}!</h1>
         <p>Mit deinen {count} Punkten hast du es in die Top-Ten aller Spieler_innen geschafft.</p>
     {:else}
-        <h1>Gut gespielt {name}</h1>
+        <h1>Schade {name}</h1>
         <p>Du hast {count} Punkte erreicht. Das reicht leider nicht für die aktuelle Top-Ten.</p>
     {/if}
     <Ranking gameResult={gameResult} topten={topten}/>

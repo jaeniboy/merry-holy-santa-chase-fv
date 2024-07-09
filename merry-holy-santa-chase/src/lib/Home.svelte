@@ -12,6 +12,11 @@
 <img alt="tree emoji" src="../../public/tree.png"/>
 <img alt="present emoji" src="../../public/present.png"/>
 <img alt="snowman emoji" src="../../public/snowman.png"/>
+<img alt="ghost emoji" src="../../public/ghost.png"/>
+<img alt="pig emoji" src="../../public/pig.png"/>
+<img alt="shark emoji" src="../../public/shark.png"/>
+<img alt="sunglasses emoji" src="../../public/sunglasses.png"/>
+<img alt="wrench emoji" src="../../public/wrench.png"/>
 <div>
     <div>Bitte gib hier deinen Namen ein:</div>
     <input on:input={(e) => setPlayerName(e)}/>
@@ -33,11 +38,5 @@
     img {
         width: 64px;
         margin-bottom: 2em;
-        image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
-        image-rendering: -moz-crisp-edges;          /* Firefox                        */
-        image-rendering: -o-crisp-edges;            /* Opera                          */
-        image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
-        image-rendering: pixelated;                 /* Universal support since 2021   */
-        image-rendering: optimize-contrast;         /* CSS3 Proposed */
     }
 </style>

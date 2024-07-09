@@ -1,17 +1,34 @@
 <script>
-  let gameState = "gameover"// intro, setting, playing, gameover
-  const goodEmojis = ["⛄","🎅","❄️","🔔","🎄"];
-  const badEmojis = ["🥑","🤡","💀","🐵","💩"]
+
+  /* Images */
+  // const goodEmojis = ["⛄","🎅","❄️","🔔","🎄"];
+  // const badEmojis = ["🥑","🤡","💀","🐵","💩"]
+  const imagePath = "../../public/"
+  const goodEmojis = [
+    "santa.png",
+    "tree.png",
+    "present.png",
+    "snowman.png",
+  ]
+  const badEmojis = [
+    "shark.png",
+    "pig.png",
+    "wrench.png",
+    "sunglasses.png",
+    "pizza.png",
+    "ghost.png",
+    "chick.png",
+    "ball.png",
+  ]
   const numFields = 35
   const fields = [...Array(numFields).keys()];
   let currentFieldID = Number;
   let interval = 3000
   const minInterval = 1000
   
-  // sound effects and background music
+  /* sound effects and background music */
   const soundSuccess = new Audio("/ding_a.mp3")
   const soundError = new Audio("/error.mp3")
-
   const speedInterval = 0.2;
   const maxSpeed = 2;
   const backgroundMusic = new Audio("/silent_night.mp3")
@@ -28,7 +45,7 @@
     const rand = Math.random();
     const emojis = rand >= 0.5 ? goodEmojis : badEmojis;
     const randIndex = Math.floor(Math.random() * emojis.length);
-    return emojis[randIndex];
+    return `<img class="emoji" src="${imagePath}${emojis[randIndex]}"/>`
   }
 
   const showEmoji = () => {
@@ -44,9 +61,11 @@
     clearFields()
 
     const fieldSelected = document.getElementById(String(newFieldID));
-    fieldSelected.innerText = getEmoji();
+    // fieldSelected.innerText = getEmoji();
+    fieldSelected.innerHTML = getEmoji();
     fieldSelected.onclick = (e) => {
-      if (goodEmojis.includes(e.target.innerText)) {
+      const emoji = e.target.src.split("/").at(-1)
+      if (goodEmojis.includes(emoji)) {
         soundSuccess.pause();
         soundSuccess.currentTime = 0;
         soundSuccess.play();
@@ -59,7 +78,7 @@
         soundError.play();
         counter.decrement();
       }
-      e.target.innerText = "";
+      e.target.parentNode.innerHTML = "";
       e.target.onclick = null;
     }
   }
@@ -139,6 +158,10 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
+    }
+
+    :global(.emoji) {
+      width: 100%;
     }
   
     /* .game-field:nth-child(odd) {

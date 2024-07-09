@@ -6,6 +6,7 @@
   // Datenbank anschließen
   // Spielanleitung hinzufügen (evtl. mit Cookie?)
   // Impressum mit Credits hinzufügen
+  // Username auf 10 Zeichen begrenzen
   
   // === bugs ===
   // Spielfeld tatsächlich responsive machen
