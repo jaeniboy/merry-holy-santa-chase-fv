@@ -1,8 +1,6 @@
 <script>
 
   /* Images */
-  // const goodEmojis = ["⛄","🎅","❄️","🔔","🎄"];
-  // const badEmojis = ["🥑","🤡","💀","🐵","💩"]
   const imagePath = "../../public/"
   const goodEmojis = [
     "santa.png",
@@ -40,6 +38,8 @@
   let counter;
 
   import Countdown from "./Countdown.svelte"
+  import { ScoreInDb } from "./store"
+  ScoreInDb.set(false)
 
   const getEmoji = () => {
     const rand = Math.random();

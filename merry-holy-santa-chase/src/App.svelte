@@ -1,8 +1,6 @@
 <script>
 
   // === todos ===
-  // Datebank gegen Löschen absichern
-  // Fehlende Top-Ten-Plätze durch Platzhalter ersetzen
   // Styling von Counter und Countdown anpassen
   // Speed-Up-Interval ändern
   // Spielanleitung hinzufügen (evtl. mit Cookie?)
@@ -11,7 +9,7 @@
   
   // === bugs ===
   // Spielfeld tatsächlich responsive machen
-  // Namenlose werte von der Datenbank ausschließen
+  // Information, welcher Eintrag neu ist, beim Reload erhalten
   // mehrfaches Eintragen ohne neues Spiel vermeiden (z.B. durch einführen eines Wahrheitswerte im Store scoreInDb = false/true)
 
   import Router from 'svelte-spa-router'
