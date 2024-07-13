@@ -72,7 +72,7 @@
 
 </script>
 
-<div>
+<main>
 
     {#await getDataFromDb()}
         ... warte auf das Resultat
@@ -95,7 +95,7 @@
     <p>Möchtest du es nochmal versuchen?</p>
     <button on:click={()=>restart("yes")}>Ja</button>
     <button on:click={()=>restart("no")}>Nein</button>
-</div>
+</main>
 
 <style>
     main {

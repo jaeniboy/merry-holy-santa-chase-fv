@@ -1,29 +1,43 @@
 <script>
-    import { get } from "svelte/store";
+    import {get} from "svelte/store";
     import {PlayerName} from "./store.js"
+    import {HasVisited} from "./store.js"
     import {push} from 'svelte-spa-router'
+
+
+    const hasVisited = get(HasVisited)
     const playerName = get(PlayerName)
+
+    !hasVisited && push("/intro")
+
     const setPlayerName = (e) => {
         console.log(e.target.value)
         PlayerName.set(e.target.value)
     }
 </script>
-
-<h1>Merry Holy Santa Chase</h1>
-<img alt="santa emoji" src="../../public/santa.png"/>
-<img alt="tree emoji" src="../../public/tree.png"/>
-<div>
-    <div>Bitte gib hier deinen Namen ein:</div>
-    <input on:input={(e) => setPlayerName(e)} value={playerName}/>
-    <div>Die besten Spieler kommen später in die Top-Ten!</div>
-</div>
-<button on:click|preventDefault={()=>push("#/game")}>Spiel starten!</button>
+<main>
+    <div id="flexbox-wrapper">
+        <h1>FANG DEN SANTA!</h1>
+        <div>
+            <img alt="tree emoji" src="../../public/tree.png"/>
+            <img alt="santa emoji" src="../../public/santa.png"/>
+            <img alt="tree emoji" src="../../public/tree.png"/>
+        </div>
+        <div>
+            <div>Bitte gib hier deinen Namen ein:</div>
+            <input on:input={(e) => setPlayerName(e)} value={playerName}/>
+            <!-- <div>Die besten Spieler kommen später in die Top-Ten!</div> -->
+        </div>
+        <button on:click|preventDefault={()=>push("#/game")}>Spiel starten!</button>
+        <button on:click|preventDefault={()=>push("#/intro")}>Hä? Erklärs mir nochmal...</button>
+    </div>
+</main>
 
 <style>
 
-    main {
+    /* main {
         padding: 0.5em;
-    }
+    } */
 
     input {
         margin-top: 2em;
@@ -38,5 +52,19 @@
     img {
         width: 64px;
         margin-bottom: 2em;
+    }
+
+    h1 {
+        color: red;
+        text-shadow: 4px 4px gray;
+    }
+
+    #flexbox-wrapper {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
 </style>

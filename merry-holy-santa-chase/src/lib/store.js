@@ -5,3 +5,4 @@ export const CountStore = persisted("CountStore",0);
 export const PlayerName = persisted("PlayerName","");
 export const ScoreInDb = persisted("ScoreInDb",false);
 export const ScoreID = persisted("ScoreID","");
+export const HasVisited = persisted("HasVisited",false);

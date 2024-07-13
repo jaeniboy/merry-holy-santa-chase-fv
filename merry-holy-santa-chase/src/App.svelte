@@ -8,8 +8,10 @@
   
   // === bugs ===
   // Spielfeld tatsächlich responsive machen
+  // Reset des Punktestandes funktioniert nicht richtig
 
   import Router from 'svelte-spa-router'
+  import Intro from "./lib/Intro.svelte"
   import Home from "./lib/Home.svelte"
   import Game from "./lib/Game.svelte"
   import Gameover from "./lib/Gameover.svelte"
@@ -17,6 +19,7 @@
 
   const routes = {
     '/': Home,
+    '/intro': Intro,
     '/game': Game,
     '/gameover': Gameover,
     '/credits': Credits,
