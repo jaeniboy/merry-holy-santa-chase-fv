@@ -61,7 +61,6 @@
     clearFields()
 
     const fieldSelected = document.getElementById(String(newFieldID));
-    // fieldSelected.innerText = getEmoji();
     fieldSelected.innerHTML = getEmoji();
     fieldSelected.onclick = (e) => {
       const emoji = e.target.src.split("/").at(-1)
@@ -139,6 +138,10 @@
     #app {
       padding: 0;
     }
+
+    main {
+      padding: 0;
+    }
   
     #board {
       /* background-color: red; */
@@ -152,6 +155,7 @@
 
     #headline {
       font-size: 1.3em;
+      padding: 0em 0.5em;
       /* padding-top: 0.5em; */
     }
   
@@ -168,7 +172,7 @@
     }
 
     :global(.emoji) {
-      width: 100%;
+      width: 90%;
     }
    
   </style>

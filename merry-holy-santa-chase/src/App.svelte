@@ -8,7 +8,6 @@
   
   // === bugs ===
   // Spielfeld tatsächlich responsive machen
-  // css für den darkmode ausschalten
 
   import Router from 'svelte-spa-router'
   import Home from "./lib/Home.svelte"

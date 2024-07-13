@@ -9,9 +9,9 @@
   font-weight: 400;
   font-size: 0.7em;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* color-scheme: light dark; */
+  /* color: rgba(255, 255, 255, 0.87); */
+  /* background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -92,7 +92,9 @@ button:focus-visible {
 }
 
 input {
-  border: 2px solid black;
+  padding: 0.6em 1.2em;
+  border: 2px solid #646cff;
+  color: #747bff;
   font-family: inherit;
   text-align: center;
 }
