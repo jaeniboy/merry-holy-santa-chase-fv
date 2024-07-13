@@ -1,7 +1,6 @@
 <script>
 
   // === todos ===
-  // Styling von Counter und Countdown anpassen
   // Speed-Up-Interval ändern
   // Spielanleitung hinzufügen (evtl. mit Cookie?)
   // Impressum mit Credits hinzufügen
@@ -28,3 +27,9 @@
 <main>
   <Router {routes}/>
 </main>
+
+<style>
+  main {
+    padding: 0.5em;
+  }
+</style>

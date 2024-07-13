@@ -2,7 +2,7 @@
     import {push} from 'svelte-spa-router'
     export let stopMusic;
 
-    let time = 1000*20;
+    let time = 1000*120;
     let interval = 1000;
     // let time = 1000*120
     
@@ -41,6 +41,12 @@
 
 </script>
 
-<div>
+<div id="countdown">
     {timeShown}
 </div>
+
+<style>
+    #countdown {
+        text-align: right;
+    }
+</style>

@@ -123,8 +123,10 @@
 </script>
 
 <main>
-    <Counter bind:this={counter}/>
-    <Countdown stopMusic={()=>stopMusic()}/>
+    <div id="headline">
+      <Counter bind:this={counter}/>
+      <Countdown stopMusic={()=>stopMusic()}/>
+    </div>
     <div id="board" use:loaded>
         {#each fields as field}
         <div id="{field}" class="game-field"></div>
@@ -147,6 +149,11 @@
       aspect-ratio: 5/7;
   
     }
+
+    #headline {
+      font-size: 1.3em;
+      /* padding-top: 0.5em; */
+    }
   
     .game-field {
       font-size: 5em;
@@ -163,13 +170,5 @@
     :global(.emoji) {
       width: 100%;
     }
-  
-    /* .game-field:nth-child(odd) {
-      background-color: lightgray;
-    }
-  
-    .game-field:nth-child(even) {
-      background-color: gray;
-    } */
    
   </style>

@@ -25,7 +25,7 @@
 
   #counter {
     position: absolute;
-    top: 0px;
+    /* top: 0px; */
   }
 
 </style>
