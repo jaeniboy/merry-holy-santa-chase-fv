@@ -96,3 +96,9 @@
     <button on:click={()=>restart("yes")}>Ja</button>
     <button on:click={()=>restart("no")}>Nein</button>
 </div>
+
+<style>
+    main {
+        padding: 0.5em;
+    }
+</style>

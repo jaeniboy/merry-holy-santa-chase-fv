@@ -156,7 +156,7 @@
     #headline {
       font-size: 1.3em;
       padding: 0em 0.5em;
-      /* padding-top: 0.5em; */
+      padding-top: 0.5em;
     }
   
     .game-field {
