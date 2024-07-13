@@ -2,15 +2,10 @@
 
     import {push} from "svelte-spa-router"
     import {get} from "svelte/store"
-    import {CountStore, PlayerName, ScoreInDb} from "./store.js"
+    import {CountStore, PlayerName, ScoreInDb, ScoreID} from "./store.js"
     import Ranking from "./Ranking.svelte"
     import {initializeApp} from "firebase/app";
     import {getFirestore, addDoc, collection, getDocs} from "firebase/firestore"
-
-    
-    console.log("scoreInDb", get(ScoreInDb))
-    console.log("PlayerName", get(PlayerName))
-    console.log("CountStore", get(CountStore))
 
     const firebaseConfig = {
         apiKey: "AIzaSyBpOgtLkUIXsLaHmqZHoqVV_0D3dCfVlVk",
@@ -27,9 +22,11 @@
     const name = get(PlayerName)
     const count = get(CountStore) 
     const scoreSaved = get(ScoreInDb)
+    const scoreID = get(ScoreID)
     const gameResult = {"name": name, "score": count, "new": true}
     const restart = (answer) => {
         CountStore.set(0)
+        ScoreID.set("")
         if (answer === "yes") {
             push("/game");
         } else {
@@ -42,7 +39,11 @@
 
         // get scores from database
         const querySnapshot = await getDocs(collection(db, "userscores"));
-        const userScores = querySnapshot.docs.map((d) => d.data())
+        const userScores = querySnapshot.docs.map((d) => {
+            const response = d.data()
+            if (d.id === scoreID) {response.new = true};
+            return response
+        })
 
         // compute top ten high score
         const scores = !scoreSaved ? [...userScores, gameResult] : [...userScores]
@@ -56,9 +57,10 @@
         }
         const isTopTen = topTen.some(e=>e.new === true)
 
-        // write game result to database if not exists an name value not empty
+        // write game result to database if not exists and name value not empty
         if (gameResult.name !== "" && !scoreSaved) {
             const docRef = await addDoc(collection(db, "userscores"), {...gameResult, "new": false})
+            ScoreID.set(docRef.id)
             console.log("Game result written to database with ID: ", docRef.id);
             ScoreInDb.set(true)
         } else {
@@ -86,7 +88,7 @@
             <h1>Schade{name==="" ? "!" : " " + name + "!"}</h1>
             <p>Du hast {count} Punkte erreicht. Das reicht leider nicht für die aktuelle Top-Ten.</p>
         {/if}
-        <Ranking gameResult={gameResult} topten={result.topTen}/>
+        <Ranking topten={result.topTen}/>
     {:catch error}
         <p style="color: red">{error.message}</p>
     {/await }

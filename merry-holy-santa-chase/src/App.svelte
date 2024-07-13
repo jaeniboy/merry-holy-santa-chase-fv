@@ -9,8 +9,7 @@
   
   // === bugs ===
   // Spielfeld tatsächlich responsive machen
-  // Information, welcher Eintrag neu ist, beim Reload erhalten
-  // mehrfaches Eintragen ohne neues Spiel vermeiden (z.B. durch einführen eines Wahrheitswerte im Store scoreInDb = false/true)
+  // css für den darkmode ausschalten
 
   import Router from 'svelte-spa-router'
   import Home from "./lib/Home.svelte"
