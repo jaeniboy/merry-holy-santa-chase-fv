@@ -23,12 +23,13 @@
 <style>
 
     #ranking {
-        margin: 4em 0em;
+        width: 80%;
+        margin: 0em 0em;
     }
 
     #high-score {
         margin: 0 auto;
-        width: 60%;
+        /* width: 60%; */
     }
 
     table {

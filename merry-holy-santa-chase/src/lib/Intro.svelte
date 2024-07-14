@@ -93,13 +93,13 @@ const onload = () => {
 
 <style>
 
-    #flexbox-wrapper {
+    /* #flexbox-wrapper {
         height: 100vh;
         width: 100vw;
         display: flex;
         align-items: center;
         justify-content: center;
-    }
+    } */
 
     #flexbox-wrapper div {
         max-width: 90vw;

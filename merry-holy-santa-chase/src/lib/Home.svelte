@@ -59,12 +59,5 @@
         text-shadow: 4px 4px gray;
     }
 
-    #flexbox-wrapper {
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
+
 </style>

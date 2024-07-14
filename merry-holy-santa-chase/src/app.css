@@ -113,3 +113,12 @@ img { /* prevent auto aliasing for pixel art */
   image-rendering: pixelated;                 /* Universal support since 2021   */
   image-rendering: optimize-contrast;         /* CSS3 Proposed */
 }
+
+#flexbox-wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
