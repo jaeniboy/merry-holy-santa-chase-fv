@@ -28,10 +28,10 @@
         CountStore.set(0)
         ScoreID.set("")
         if (answer === "yes") {
-            push("/game");
+            push("/");
         } else {
             // PlayerName.set("")
-            push("/")
+            push("/credits")
         }
     }
     

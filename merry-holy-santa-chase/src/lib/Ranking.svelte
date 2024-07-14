@@ -24,6 +24,7 @@
 
     #ranking {
         width: 80%;
+        max-width: 400px;
         margin: 0em 0em;
     }
 
