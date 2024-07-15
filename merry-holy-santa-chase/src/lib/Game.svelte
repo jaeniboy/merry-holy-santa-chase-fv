@@ -17,12 +17,16 @@
     "ghost.png",
     "chick.png",
     "ball.png",
+    "cactus.png",
+    "island.png"
   ]
   const numFields = 35
   const fields = [...Array(numFields).keys()];
   let currentFieldID = Number;
-  let interval = 3000
-  const minInterval = 1000
+  let interval = 1200
+  const minInterval = 600
+  let speedUpCounter = 0
+  const speedUpInterval = 5
   
   /* sound effects and background music */
   const soundSuccess = new Audio("/ding_a.mp3")
@@ -70,7 +74,6 @@
         soundSuccess.play();
         counter.increment();
         setInterval();
-        seedUpMusic();
       } else {
         soundError.pause();
         soundError.currentTime = 0;
@@ -90,7 +93,7 @@
     }
   }
 
-  const seedUpMusic = () => {
+  const speedUpMusic = () => {
     const pr = backgroundMusic.playbackRate
     if (pr < maxSpeed) {
       backgroundMusic.playbackRate = pr + speedInterval;
@@ -102,8 +105,11 @@
   }
 
   const setInterval = () => {
-    if (interval > minInterval) {
-      interval -= 500;
+    speedUpCounter++
+    if (interval > minInterval && speedUpCounter === speedUpInterval) {
+      interval -= 100;
+      speedUpCounter = 0
+      speedUpMusic();
     }
   }
 
