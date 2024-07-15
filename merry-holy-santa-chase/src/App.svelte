@@ -1,13 +1,8 @@
 <script>
 
   // === todos ===
-  // Speed-Up-Interval ändern
-  // Impressum mit Credits hinzufügen
-  // Username auf 10 Zeichen begrenzen
   
   // === bugs ===
-  // Spielfeld tatsächlich responsive machen
-  // Reset des Punktestandes funktioniert nicht richtig
 
   import Router from 'svelte-spa-router'
   import Intro from "./lib/Intro.svelte"

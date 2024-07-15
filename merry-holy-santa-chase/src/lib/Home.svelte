@@ -25,7 +25,7 @@
         </div>
         <div>
             <div>Bitte gib hier deinen Namen ein:</div>
-            <input on:input={(e) => setPlayerName(e)} value={playerName}/>
+            <input on:input={(e) => setPlayerName(e)} value={playerName} maxlength="12"/>
             <!-- <div>Die besten Spieler kommen später in die Top-Ten!</div> -->
         </div>
         <button on:click|preventDefault={()=>push("#/game")}>Spiel starten!</button>

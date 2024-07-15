@@ -42,8 +42,9 @@
   let counter;
 
   import Countdown from "./Countdown.svelte"
-  import { ScoreInDb } from "./store"
+  import { ScoreInDb, CountStore } from "./store"
   ScoreInDb.set(false)
+  CountStore.set(0)
 
   const getEmoji = () => {
     const rand = Math.random();
