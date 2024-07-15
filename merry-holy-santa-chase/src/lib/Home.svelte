@@ -19,9 +19,9 @@
     <div id="flexbox-wrapper">
         <h1>FANG DEN SANTA!</h1>
         <div>
-            <img alt="tree emoji" src="../../public/tree.png"/>
-            <img alt="santa emoji" src="../../public/santa.png"/>
-            <img alt="tree emoji" src="../../public/tree.png"/>
+            <img alt="tree emoji" src="/tree.png"/>
+            <img alt="santa emoji" src="/santa.png"/>
+            <img alt="tree emoji" src="/tree.png"/>
         </div>
         <div>
             <div>Bitte gib hier deinen Namen ein:</div>

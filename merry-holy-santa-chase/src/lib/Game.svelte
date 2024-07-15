@@ -1,7 +1,7 @@
 <script>
 
   /* Images */
-  const imagePath = "../../public/"
+  const imagePath = "/"
   const goodEmojis = [
     "santa.png",
     "tree.png",
