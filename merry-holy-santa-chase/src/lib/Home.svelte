@@ -3,7 +3,8 @@
     import {PlayerName} from "./store.js"
     import {HasVisited} from "./store.js"
     import {push} from 'svelte-spa-router'
-
+    import treeImage from '/tree.png'
+    import santaImage from '/santa.png'
 
     const hasVisited = get(HasVisited)
     const playerName = get(PlayerName)
@@ -19,9 +20,9 @@
     <div id="flexbox-wrapper">
         <h1>FANG DEN SANTA!</h1>
         <div>
-            <img alt="tree emoji" src="/tree.png"/>
-            <img alt="santa emoji" src="/santa.png"/>
-            <img alt="tree emoji" src="/tree.png"/>
+            <img alt="tree emoji" src="{treeImage}"/>
+            <img alt="santa emoji" src="{santaImage}"/>
+            <img alt="tree emoji" src="{treeImage}"/>
         </div>
         <div>
             <div>Bitte gib hier deinen Namen ein:</div>

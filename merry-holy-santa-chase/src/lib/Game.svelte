@@ -1,39 +1,60 @@
 <script>
 
   /* Images */
-  const imagePath = "/"
+  import treeImage from '/tree.png'
+  import santaImage from '/santa.png'
+  import presentImage from '/present.png'
+  import snowmanImage from '/snowman.png'
+  import sharkImage from '/shark.png'
+  import pigImage from '/pig.png'
+  import wrenchImage from '/wrench.png'
+  import sunglassesImage from '/sunglasses.png'
+  import pizzaImage from '/pizza.png'
+  import ghostImage from '/ghost.png'
+  import chickImage from '/chick.png'
+  import ballImage from '/ball.png'
+  import cactusImage from '/cactus.png'
+  import islandImage from '/island.png'
+
+  /* Sounds */
+  import dingSound from '/ding_a.mp3'
+  import errorSound from '/error.mp3'
+  import silentNightSound from '/silent_night.mp3'
+
+  /* Images */
   const goodEmojis = [
-    "santa.png",
-    "tree.png",
-    "present.png",
-    "snowman.png",
+    santaImage,
+    treeImage,
+    presentImage,
+    snowmanImage,
   ]
   const badEmojis = [
-    "shark.png",
-    "pig.png",
-    "wrench.png",
-    "sunglasses.png",
-    "pizza.png",
-    "ghost.png",
-    "chick.png",
-    "ball.png",
-    "cactus.png",
-    "island.png"
+    sharkImage,
+    pigImage,
+    wrenchImage,
+    sunglassesImage,
+    pizzaImage,
+    ghostImage,
+    chickImage,
+    ballImage,
+    cactusImage,
+    islandImage
   ]
   const numFields = 35
   const fields = [...Array(numFields).keys()];
   let currentFieldID = Number;
   let interval = 1200
+  // let interval = 12000
   const minInterval = 600
   let speedUpCounter = 0
   const speedUpInterval = 5
   
   /* sound effects and background music */
-  const soundSuccess = new Audio("/ding_a.mp3")
-  const soundError = new Audio("/error.mp3")
+  const soundSuccess = new Audio(dingSound)
+  const soundError = new Audio(errorSound)
   const speedInterval = 0.2;
   const maxSpeed = 2;
-  const backgroundMusic = new Audio("/silent_night.mp3")
+  const backgroundMusic = new Audio(silentNightSound)
   backgroundMusic.volume = 0.2;
   backgroundMusic.loop = true;
   backgroundMusic.play()
@@ -50,7 +71,7 @@
     const rand = Math.random();
     const emojis = rand >= 0.5 ? goodEmojis : badEmojis;
     const randIndex = Math.floor(Math.random() * emojis.length);
-    return `<img class="emoji" src="${imagePath}${emojis[randIndex]}"/>`
+    return `<img class="emoji" data-kind=${rand >= 0.5 ? "good" : "bad"} src=${emojis[randIndex]}>`
   }
 
   const showEmoji = () => {
@@ -68,8 +89,8 @@
     const fieldSelected = document.getElementById(String(newFieldID));
     fieldSelected.innerHTML = getEmoji();
     fieldSelected.onclick = (e) => {
-      const emoji = e.target.src.split("/").at(-1)
-      if (goodEmojis.includes(emoji)) {
+      const emoji = e.target.dataset.kind
+      if (emoji === "good") {
         soundSuccess.pause();
         soundSuccess.currentTime = 0;
         soundSuccess.play();
