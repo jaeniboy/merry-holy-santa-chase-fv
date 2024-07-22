@@ -23,6 +23,11 @@
 </div>
 
 <style>
+
+    #flexbox-wrapper div {
+        max-width: 90vw;
+    }
+
     p:first-child {
         color: red;
     }
