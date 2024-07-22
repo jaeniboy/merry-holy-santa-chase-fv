@@ -6,6 +6,7 @@
     import Ranking from "./Ranking.svelte"
     import {initializeApp} from "firebase/app";
     import {getFirestore, addDoc, collection, getDocs} from "firebase/firestore"
+    import {onDestroy} from 'svelte'
 
     const firebaseConfig = {
         apiKey: "AIzaSyBpOgtLkUIXsLaHmqZHoqVV_0D3dCfVlVk",
@@ -24,6 +25,9 @@
     const scoreSaved = get(ScoreInDb)
     const scoreID = get(ScoreID)
     const gameResult = {"name": name, "score": count, "new": true}
+
+    let browserNavigation = true
+
     const restart = (answer) => {
         CountStore.set(0)
         ScoreID.set("")
@@ -31,6 +35,7 @@
             push("/");
         } else {
             // PlayerName.set("")
+            browserNavigation = false
             push("/credits")
         }
     }
@@ -69,6 +74,12 @@
 
         return {topTen, isTopTen}
     }
+
+    onDestroy(()=>{
+        if (browserNavigation) {
+            push("/")
+        }
+    })
 
 </script>
 
