@@ -51,6 +51,7 @@
   const minInterval = 600
   let speedUpCounter = 0
   const speedUpInterval = 5
+  let stopped = false
   
   /* sound effects and background music */
   const soundSuccess = new Audio(dingSound)
@@ -66,6 +67,7 @@
   let counter;
 
   import Countdown from "./Countdown.svelte"
+  import { onDestroy } from 'svelte'
   import { ScoreInDb, CountStore } from "./store"
   ScoreInDb.set(false)
   CountStore.set(0)
@@ -154,7 +156,9 @@
   const runLoop = () => {
     setTimeout(()=>{
       showEmoji()
-      runLoop();
+      if (!stopped) {
+        runLoop();
+      } 
     }, interval);
   }
 
@@ -163,6 +167,11 @@
     showEmoji()
     runLoop()
   }
+
+  onDestroy(()=>{
+    stopMusic()
+    stopped = true
+  })
 </script>
 
 <main>

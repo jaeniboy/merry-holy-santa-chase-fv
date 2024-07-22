@@ -1,9 +1,11 @@
 <script>
     import {push} from 'svelte-spa-router'
+    import {onDestroy} from 'svelte'
     export let stopMusic;
 
-    let time = 1000*120;
+    let time = 1000*10;
     let interval = 1000;
+    let running = true;
     // let time = 1000*120
     
     const twoDigits = (number) => {
@@ -27,17 +29,22 @@
         setTimeout(()=>{
             time -= interval;
             timeShown = timeString(time);
-            if (time > 0) {
+            if (time > 0 && running) {
                 startCountdown();
+            } else if (time > 0 && !running) {
+                console.log("Countdown stopped")
             } else {
                 console.log("Done!")
-                stopMusic();
                 push('/gameover')
             }
         }, interval)
     }
 
     startCountdown()
+
+    onDestroy(()=>{
+        running = false;
+    })
 
 </script>
 
