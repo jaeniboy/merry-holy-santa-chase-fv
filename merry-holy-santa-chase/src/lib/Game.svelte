@@ -40,6 +40,9 @@
     cactusImage,
     islandImage
   ]
+  const allEmojis = [...goodEmojis, ...badEmojis]
+
+  // game settings
   const numFields = 35
   const fields = [...Array(numFields).keys()];
   let currentFieldID = Number;
@@ -52,7 +55,7 @@
   /* sound effects and background music */
   const soundSuccess = new Audio(dingSound)
   const soundError = new Audio(errorSound)
-  const speedInterval = 0.2;
+  const speedInterval = 0.1;
   const maxSpeed = 2;
   const backgroundMusic = new Audio(silentNightSound)
   backgroundMusic.volume = 0.2;
@@ -66,6 +69,15 @@
   import { ScoreInDb, CountStore } from "./store"
   ScoreInDb.set(false)
   CountStore.set(0)
+
+  const preload = src => new Promise((resolve, reject) => {
+    const img = new Image()
+    img.onload = resolve
+    img.onerror = reject
+    img.src = src
+  })
+
+  const preloadAll = async srcs => Promise.all(srcs.map(preload))
 
   const getEmoji = () => {
     const rand = Math.random();
@@ -86,24 +98,30 @@
     currentFieldID = newFieldID
     clearFields()
 
-    const fieldSelected = document.getElementById(String(newFieldID));
-    fieldSelected.innerHTML = getEmoji();
-    fieldSelected.onclick = (e) => {
-      const emoji = e.target.dataset.kind
-      if (emoji === "good") {
-        soundSuccess.pause();
-        soundSuccess.currentTime = 0;
-        soundSuccess.play();
-        counter.increment();
-        setInterval();
-      } else {
-        soundError.pause();
-        soundError.currentTime = 0;
-        soundError.play();
-        counter.decrement();
+    try {
+      const fieldSelected = document.getElementById(String(newFieldID));
+      fieldSelected.innerHTML = getEmoji();
+      fieldSelected.onclick = (e) => {
+        const emoji = e.target.dataset.kind
+        if (emoji === "good") {
+          soundSuccess.pause();
+          soundSuccess.currentTime = 0;
+          soundSuccess.play();
+          counter.increment();
+          setInterval();
+        } else {
+          soundError.pause();
+          soundError.currentTime = 0;
+          soundError.play();
+          counter.decrement();
+        }
+        e.target.parentNode.innerHTML = "";
+        e.target.onclick = null;
+
       }
-      e.target.parentNode.innerHTML = "";
-      e.target.onclick = null;
+    } catch(err) {
+      // intentionally blank
+      //console.log("myerror",err)
     }
   }
 
@@ -117,9 +135,7 @@
 
   const speedUpMusic = () => {
     const pr = backgroundMusic.playbackRate
-    if (pr < maxSpeed) {
-      backgroundMusic.playbackRate = pr + speedInterval;
-    }
+    backgroundMusic.playbackRate = pr + speedInterval;
   }
 
   const stopMusic = () => {
@@ -150,6 +166,9 @@
 </script>
 
 <main>
+  {#await preloadAll(allEmojis)}
+    <div>Lade Spiel-Ressourcen</div>
+  {:then result} 
     <div id="headline">
       <Counter bind:this={counter}/>
       <Countdown stopMusic={()=>stopMusic()}/>
@@ -159,6 +178,7 @@
         <div id="{field}" class="game-field"></div>
         {/each}
     </div>
+  {/await}
 </main>
 
 <style>

@@ -15,6 +15,7 @@
         console.log(e.target.value)
         PlayerName.set(e.target.value)
     }
+
 </script>
 <main>
     <div id="flexbox-wrapper">
