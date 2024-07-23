@@ -3,7 +3,7 @@
   // === todos ===
   // * Skip-Button im Intro
   // * Breite des Intros begrenzen (falls Querformat)
-  // * Feldbreite bei Gameover bregrenzen
+  // * Funkel-Glitzer-Sterne-Hintergrund
   
   // === bugs ===
   // * doppeltes Anzeigen von Spielernamen als new
