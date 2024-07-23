@@ -1,11 +1,13 @@
 <script>
 
   // === todos ===
+  // * Skip-Button im Intro
+  // * Breite des Intros begrenzen (falls Querformat)
+  // * Feldbreite bei Gameover bregrenzen
   
   // === bugs ===
   // * doppeltes Anzeigen von Spielernamen als new
   // * plötzliche Rückkehr zum Startbildschirm
-  // * Musik stoppen, wenn man das eigentliche Spiel verlässt
   // * wiredes Verhalten beim erstmaligen Starten der App
 
   import Router from 'svelte-spa-router'
