@@ -1,7 +1,6 @@
 <script>
     import {push} from 'svelte-spa-router'
     import {onDestroy} from 'svelte'
-    export let stopMusic;
 
     let time = 1000*120;
     let interval = 1000;

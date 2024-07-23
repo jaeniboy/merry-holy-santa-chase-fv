@@ -178,7 +178,7 @@
   {:then result} 
     <div id="headline">
       <Counter bind:this={counter}/>
-      <Countdown stopMusic={()=>stopMusic()}/>
+      <Countdown/>
     </div>
     <div id="board" use:loaded>
         {#each fields as field}
