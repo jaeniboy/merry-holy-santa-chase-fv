@@ -100,32 +100,26 @@
     currentFieldID = newFieldID
     clearFields()
 
-    try {
-      const fieldSelected = document.getElementById(String(newFieldID));
-      fieldSelected.innerHTML = getEmoji();
-      fieldSelected.onclick = (e) => {
-        const emoji = e.target.dataset.kind
-        if (emoji === "good") {
-          soundSuccess.pause();
-          soundSuccess.currentTime = 0;
-          soundSuccess.play();
-          counter.increment();
-          setInterval();
-        } else {
-          soundError.pause();
-          soundError.currentTime = 0;
-          soundError.play();
-          counter.decrement();
-        }
-        e.target.parentNode.innerHTML = "";
-        e.target.onclick = null;
-
+    const fieldSelected = document.getElementById(String(newFieldID));
+    fieldSelected.innerHTML = getEmoji();
+    fieldSelected.children[0].onclick = (e) => {
+      const emoji = e.target.dataset.kind
+      if (emoji === "good") {
+        soundSuccess.pause();
+        soundSuccess.currentTime = 0;
+        soundSuccess.play();
+        counter.increment();
+        setInterval();
+      } else if (emoji === "bad") {
+        soundError.pause();
+        soundError.currentTime = 0;
+        soundError.play();
+        counter.decrement();
       }
-    } catch(err) {
-      // intentionally blank
-      //console.log("myerror",err)
-    }
+      e.target.parentNode.innerHTML = "";
+      e.target.onclick = null;
   }
+}
 
   const clearFields = () => {
     const allFields = document.getElementsByClassName("game-field")

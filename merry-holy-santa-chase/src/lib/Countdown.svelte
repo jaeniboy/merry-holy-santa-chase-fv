@@ -3,7 +3,7 @@
     import {onDestroy} from 'svelte'
     export let stopMusic;
 
-    let time = 1000*10;
+    let time = 1000*120;
     let interval = 1000;
     let running = true;
     // let time = 1000*120
