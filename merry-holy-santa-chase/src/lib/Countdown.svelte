@@ -35,7 +35,9 @@
                 console.log("Countdown stopped")
             } else {
                 console.log("Done!")
-                push('/gameover')
+                setTimeout( () => {
+                    push('/gameover')
+                },1000)
             }
         }, interval)
     }

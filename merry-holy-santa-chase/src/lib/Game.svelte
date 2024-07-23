@@ -101,24 +101,28 @@
     clearFields()
 
     const fieldSelected = document.getElementById(String(newFieldID));
-    fieldSelected.innerHTML = getEmoji();
-    fieldSelected.children[0].onclick = (e) => {
-      const emoji = e.target.dataset.kind
-      if (emoji === "good") {
-        soundSuccess.pause();
-        soundSuccess.currentTime = 0;
-        soundSuccess.play();
-        counter.increment();
-        setInterval();
-      } else if (emoji === "bad") {
-        soundError.pause();
-        soundError.currentTime = 0;
-        soundError.play();
-        counter.decrement();
+    if (fieldSelected !== null) {
+      fieldSelected.innerHTML = getEmoji();
+      fieldSelected.children[0].onclick = (e) => {
+        const emoji = e.target.dataset.kind
+        if (emoji === "good") {
+          soundSuccess.pause();
+          soundSuccess.currentTime = 0;
+          soundSuccess.play();
+          counter.increment();
+          setInterval();
+        } else if (emoji === "bad") {
+          soundError.pause();
+          soundError.currentTime = 0;
+          soundError.play();
+          counter.decrement();
+        }
+        e.target.parentNode.innerHTML = "";
+        e.target.onclick = null;
       }
-      e.target.parentNode.innerHTML = "";
-      e.target.onclick = null;
-  }
+    } else {
+      console.log("fieldSelected is null, but who cares!")
+    }
 }
 
   const clearFields = () => {
