@@ -1,14 +1,14 @@
 <script>
 
   // === todos ===
-  // * Skip-Button im Intro
-  // * Breite des Intros begrenzen (falls Querformat)
   // * Funkel-Glitzer-Sterne-Hintergrund
   
   // === bugs ===
   // * doppeltes Anzeigen von Spielernamen als new
   // * plötzliche Rückkehr zum Startbildschirm
   // * wiredes Verhalten beim erstmaligen Starten der App
+  // * fehlendes großes Ü in der Schriftart nacharbeiten
+  // * Hintergrund im Querformat anpassen
 
   import Router from 'svelte-spa-router'
   import Intro from "./lib/Intro.svelte"

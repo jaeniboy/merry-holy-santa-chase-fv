@@ -11,8 +11,9 @@ const content = [
     {"type":"text","text":"Klicke auf alle Emojis, die etwas mit Weihnachten zu tun haben."},
     {"type":"text","text":"Für jedes Weihnachts-Emoji bekommst du einen Punkt."},
     {"type":"text","text":"Aber Achtung: Nicht-Weihnachts-Emojis geben Strafpunkte!"},
-    {"type":"text","text":"Wenn du auf der nächsten Seite einen Spielernamen eingibst, wird dein Punktestand in einer High-Score gespeichert"},
-    {"type":"text","text":"Wenn du das nicht möchtest, kannst du auch einfach so spielen. Lass dann einfach das Namensfeld leer."},
+    {"type":"text","text":"Wenn du auf der nächsten Seite einen Spielernamen eingibst, wird dein Punktestand gespeichert."},
+    {"type":"text","text":"Wenn du das nicht möchtest, kannst du auch anonym spielen."},
+    {"type":"text","text":"Lass dann einfach das Namensfeld leer."},
 ]
 
 let typingDelay = 50;
@@ -73,8 +74,7 @@ const oncallback = () => {
                 pasting(cntxt.text, contentContainer, oncallback);
             }
         } else {
-            HasVisited.set(true)
-            push("/")
+            pushToHomeScreen()
         }
     },paragraphDelay)
 }
@@ -84,32 +84,43 @@ const onload = () => {
     typing(content[contentIndex].text, contentContainer, oncallback)
 }
 
+const pushToHomeScreen = () => {
+    HasVisited.set(true)
+    push("/")
+}
+
 </script>
 <main>
     <div id="flexbox-wrapper">
         <div use:onload id="content-container" class={styleType}></div>
+        <button on:click|preventDefault={()=>pushToHomeScreen()}>überspringen</button>
     </div>
 </main>
 
 <style>
 
-    /* #flexbox-wrapper {
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    } */
-
     #flexbox-wrapper div {
         max-width: 90vw;
     }
+
+    @media screen and (orientation:landscape) { 
+        #flexbox-wrapper div {
+            max-width: 50vw;
+        }
+     }
 
     .title {
         font-size: 3.2em;
         line-height: 1.1em;
         color: red;
         text-shadow: 4px 4px gray;
+    }
+
+    button {
+        margin-top: 2em;
+        color: #646cff;
+        position: absolute;
+        bottom: 30%;
     }
 
 </style>

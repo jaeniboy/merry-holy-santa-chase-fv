@@ -37,10 +37,6 @@
 
 <style>
 
-    /* main {
-        padding: 0.5em;
-    } */
-
     input {
         margin-top: 2em;
         margin-bottom: 2em;
