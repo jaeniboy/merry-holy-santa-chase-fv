@@ -110,9 +110,3 @@
         </div>
     </div>
 <!-- </main> -->
-
-<style>
-    main {
-        padding: 0.5em;
-    }
-</style>
