@@ -1,12 +1,11 @@
 <script>
 
-    import {push} from "svelte-spa-router"
     import {get} from "svelte/store"
     import {CountStore, PlayerName, ScoreInDb, ScoreID} from "./store.js"
     import Ranking from "./Ranking.svelte"
+    import Retry from "./Retry.svelte"
     import {initializeApp} from "firebase/app";
     import {getFirestore, addDoc, collection, getDocs} from "firebase/firestore"
-    import {onDestroy} from 'svelte'
 
     const firebaseConfig = {
         apiKey: "AIzaSyBpOgtLkUIXsLaHmqZHoqVV_0D3dCfVlVk",
@@ -25,20 +24,6 @@
     const scoreSaved = get(ScoreInDb)
     const scoreID = get(ScoreID)
     const gameResult = {"name": name, "score": count, "new": true}
-
-    let browserNavigation = true
-
-    const restart = (answer) => {
-        CountStore.set(0)
-        ScoreID.set("")
-        if (answer === "yes") {
-            push("/");
-        } else {
-            // PlayerName.set("")
-            browserNavigation = false
-            push("/credits")
-        }
-    }
     
     const getDataFromDb = async () => {
 
@@ -75,38 +60,35 @@
         return {topTen, isTopTen}
     }
 
-    onDestroy(()=>{
-        if (browserNavigation) {
-            push("/")
-        }
-    })
-
 </script>
 
-<!-- <main> -->
-    <div id="flexbox-wrapper">
-        {#await getDataFromDb()}
-            ... warte auf das Resultat
-        {:then result}
-            {#if result.isTopTen && name !== ""}
-                <h1>Super {name}!</h1>
-                <p>Mit deinen {count} Punkten hast du es in die Top-Ten geschafft. Dein Ergebnis wird dauerhaft gespeichert.</p>
-            {:else if result.isTopTen && name === ""}
-                <h1>Schade!</h1>
-                <p>Mit deinen {count} Punkten hättest du es in die Top-Ten geschafft.</p>
-                <p>Leider hast du keinen Namen eingegeben und dein Ergebnis kann nicht gespeichert werden.</p>
-            {:else}
-                <h1>Schade{name==="" ? "!" : " " + name + "!"}</h1>
-                <p>Du hast {count} Punkte erreicht. Das reicht leider nicht für die aktuelle Top-Ten.</p>
-            {/if}
-            <Ranking topten={result.topTen}/>
-        {:catch error}
-            <p style="color: red">{error.message}</p>
-        {/await }
-        <p>Möchtest du es nochmal versuchen?</p>
-        <div>
-            <button on:click={()=>restart("yes")}>Ja</button>
-            <button on:click={()=>restart("no")}>Nein</button>
-        </div>
+<div id="flexbox-wrapper">
+    <div>
+    {#await getDataFromDb()}
+        ... warte auf das Resultat
+    {:then result}
+        {#if result.isTopTen && name !== ""}
+            <h1>Super {name}!</h1>
+            <p>Mit deinen {count} Punkten hast du es in die Top-Ten geschafft. Dein Ergebnis wird dauerhaft gespeichert.</p>
+        {:else if result.isTopTen && name === ""}
+            <h1>Schade!</h1>
+            <p>Mit deinen {count} Punkten hättest du es in die Top-Ten geschafft.</p>
+            <p>Leider hast du keinen Namen eingegeben und dein Ergebnis kann nicht gespeichert werden.</p>
+        {:else}
+            <h1>Schade{name==="" ? "!" : " " + name + "!"}</h1>
+            <p>Du hast {count} Punkte erreicht. Das reicht leider nicht für die aktuelle Top-Ten.</p>
+        {/if}
+        <Ranking topten={result.topTen}/>
+        <Retry />
+    {:catch error}
+        <p style="color: red">{error.message}</p>
+        <Retry />
+    {/await }
     </div>
-<!-- </main> -->
+</div>
+
+<style>
+    #flexbox-wrapper div {
+        max-width: 90vw;
+    }
+</style>

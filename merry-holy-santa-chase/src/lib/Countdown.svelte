@@ -5,8 +5,7 @@
     let time = 1000*120;
     let interval = 1000;
     let running = true;
-    // let time = 1000*120
-    
+        
     const twoDigits = (number) => {
         return number.toLocaleString('en-US', {
             minimumIntegerDigits: 2,
