@@ -2,13 +2,13 @@
 
   // === todos ===
   // * Funkel-Glitzer-Sterne-Hintergrund
+  // * Musik zu einer Endlosschleife machen
   
   // === bugs ===
   // * doppeltes Anzeigen von Spielernamen als new
   // * plötzliche Rückkehr zum Startbildschirm
   // * wiredes Verhalten beim erstmaligen Starten der App
   // * fehlendes großes Ü in der Schriftart nacharbeiten
-  // * Hintergrund im Querformat anpassen
 
   import Router from 'svelte-spa-router'
   import Intro from "./lib/Intro.svelte"
