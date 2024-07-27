@@ -73,19 +73,13 @@ button:focus-visible {
 
 /* @media (prefers-color-scheme: light) { */
   :root {
-    /* color: #213547; */
     color: #ffffff;
     background-color: #ffffff;
-    /* background-image: url('/trees.webp') */
-    /* background-image: url('/background-trees.png'); */
-    background-image: url('/background_v1.png');
-    /* background-size: auto 100%; */
+    background-image: url('/bg.png');
     background-size:  cover;
     background-position: center;
     background-repeat: no-repeat;
     image-rendering: pixelated;
-
-    /* background-size: 100%; */
   }
   a:hover {
     color: #747bff;
