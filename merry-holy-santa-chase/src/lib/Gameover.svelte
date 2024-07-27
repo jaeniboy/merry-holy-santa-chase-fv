@@ -63,7 +63,6 @@
 </script>
 
 <div id="flexbox-wrapper">
-    <div>
     {#await getDataFromDb()}
         ... warte auf das Resultat
     {:then result}
@@ -84,11 +83,10 @@
         <p style="color: red">{error.message}</p>
         <Retry />
     {/await }
-    </div>
 </div>
 
 <style>
-    #flexbox-wrapper div {
+    #flexbox-wrapper  {
         max-width: 90vw;
     }
 </style>
