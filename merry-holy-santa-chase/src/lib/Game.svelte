@@ -56,10 +56,10 @@
   /* sound effects and background music */
   const soundSuccess = new Audio(dingSound)
   const soundError = new Audio(errorSound)
-  const speedInterval = 0.1;
+  const speedInterval = 0.2;
   const maxSpeed = 2;
   const backgroundMusic = new Audio(silentNightSound)
-  backgroundMusic.volume = 0.2;
+  backgroundMusic.volume = 0.6;
   backgroundMusic.loop = true;
   backgroundMusic.play()
   
