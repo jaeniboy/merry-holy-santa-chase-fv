@@ -18,7 +18,7 @@
 
   /* Sounds */
   import dingSound from '/ding_8bit.mp3'
-  import errorSound from '/error_8bit.mp3'
+  import errorSound from '/error_new.mp3'
   import silentNightSound from '/silent_night.mp3'
 
   /* Images */
