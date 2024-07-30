@@ -1,5 +1,4 @@
 <script>
-    // import { connectFirestoreEmulator } from "firebase/firestore";
 import {push} from 'svelte-spa-router'
 import {HasVisited} from "./store.js"
 

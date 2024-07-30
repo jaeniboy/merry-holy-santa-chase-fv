@@ -47,7 +47,6 @@
   const fields = [...Array(numFields).keys()];
   let currentFieldID = Number;
   let interval = 1200
-  // let interval = 12000
   const minInterval = 600
   let speedUpCounter = 0
   const speedUpInterval = 5
@@ -190,44 +189,42 @@
 
 <style>
 
-    #app {
-      padding: 0;
-    }
+  #app {
+    padding: 0;
+  }
 
-    main {
-      padding: 0;
-    }
-  
-    #board {
-      /* background-color: red; */
-      height: 80vh;
-      max-height: calc((100vw/5)*7);
-      margin-top: 15%;
-      width: auto;
-      aspect-ratio: 5/7;
-  
-    }
+  main {
+    padding: 0;
+  }
 
-    #headline {
-      font-size: 1.3em;
-      padding: 0em 0.5em;
-      padding-top: 0.5em;
-    }
-  
-    .game-field {
-      font-size: 5em;
-      float: left;
-      height: 14.28571428571429%;
-      width: auto;
-      aspect-ratio: 1/1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
+  #board {
+    height: 80vh;
+    max-height: calc((100vw/5)*7);
+    margin-top: 15%;
+    width: auto;
+    aspect-ratio: 5/7;
+  }
 
-    :global(.emoji) {
-      width: 90%;
-    }
-   
-  </style>
+  #headline {
+    font-size: 1.3em;
+    padding: 0em 0.5em;
+    padding-top: 0.5em;
+  }
+
+  .game-field {
+    font-size: 5em;
+    float: left;
+    height: 14.28571428571429%;
+    width: auto;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  :global(.emoji) {
+    width: 90%;
+  }
+
+</style>

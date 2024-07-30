@@ -12,7 +12,6 @@
         if (answer === "yes") {
             push("/");
         } else {
-            // PlayerName.set("")
             browserNavigation = false
             push("/credits")
         }

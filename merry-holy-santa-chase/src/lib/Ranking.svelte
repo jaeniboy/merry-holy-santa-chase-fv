@@ -30,7 +30,6 @@
 
     #high-score {
         margin: 0 auto;
-        /* width: 60%; */
     }
 
     table {

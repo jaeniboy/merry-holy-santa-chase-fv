@@ -2,13 +2,11 @@
 
   // === todos ===
   // * Funkel-Glitzer-Sterne-Hintergrund
-  // * Musik zu einer Endlosschleife machen
   
   // === bugs ===
   // * doppeltes Anzeigen von Spielernamen als new
   // * plötzliche Rückkehr zum Startbildschirm
   // * wiredes Verhalten beim erstmaligen Starten der App
-  // * fehlendes großes Ü in der Schriftart nacharbeiten
 
   import Router from 'svelte-spa-router'
   import Intro from "./lib/Intro.svelte"
@@ -50,7 +48,6 @@
         "source": source, 
         "line": lineNo,  
         "col": columnNo,
-        // "error": error,
         "timestamp": Date.now()
       }; 
           
@@ -64,7 +61,6 @@
     console.log('onunhandledrejection handler logging error', errorEvent);
 
     const errorData = {
-        // "error": errorEvent.reason,  
         "source": errorEvent.reason.fileName, 
         "line": errorEvent.reason.lineNumber,  
         "col": errorEvent.reason.columnNumber,
@@ -75,8 +71,6 @@
     const docRef = await addDoc(collection(db, "errorlogs"), {errorData})
     console.log(`rejection error written to server with id ${docRef.id}`)
 
-    // console.log(errorData)
-
     return true;
   }
 
@@ -85,9 +79,3 @@
 <main>
   <Router {routes}/>
 </main>
-
-<style>
-  main {
-    /* padding: 0.5em; */
-  }
-</style>
