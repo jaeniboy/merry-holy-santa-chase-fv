@@ -14,6 +14,8 @@
   import Game from "./lib/Game.svelte"
   import Gameover from "./lib/Gameover.svelte"
   import Credits from "./lib/Credits.svelte"
+  import Admin from './lib/Admin.svelte';
+  import Login from './lib/Login.svelte';
 
   import {initializeApp} from "firebase/app";
   import {getFirestore, addDoc, collection} from "firebase/firestore"
@@ -37,6 +39,8 @@
     '/game': Game,
     '/gameover': Gameover,
     '/credits': Credits,
+    '/dmn': Admin,
+    '/login': Login,
   }
 
   // error logs
