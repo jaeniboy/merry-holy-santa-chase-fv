@@ -1,5 +1,5 @@
 {
-  "name": "merry-holy-santa-chase",
+  "name": "merry-holy-santa-chase-fv",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,7 +13,7 @@
     "@sveltejs/vite-plugin-svelte": "^3.1.1",
     "gh-pages": "^6.1.1",
     "svelte": "^4.2.18",
-    "vite": "^5.3.1"
+    "vite": "^5.4.10"
   },
   "dependencies": {
     "firebase": "^10.12.3",
