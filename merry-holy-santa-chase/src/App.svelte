@@ -20,6 +20,9 @@
   import {initializeApp} from "firebase/app";
   import {getFirestore, addDoc, collection} from "firebase/firestore"
 
+  import {familyVersion} from "./lib/config"
+
+  console.log("family version: ", familyVersion)
 
   const firebaseConfig = {
         apiKey: "AIzaSyBpOgtLkUIXsLaHmqZHoqVV_0D3dCfVlVk",

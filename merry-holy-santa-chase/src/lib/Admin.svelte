@@ -4,6 +4,7 @@ import {initializeApp} from "firebase/app";
 import {getFirestore, doc, getDocs, deleteDoc, collection} from "firebase/firestore"
 import {getAuth} from "firebase/auth"
 import {push} from "svelte-spa-router"
+import {familyVersion} from "./config"
 
 const firebaseConfig = {
     apiKey: "AIzaSyBpOgtLkUIXsLaHmqZHoqVV_0D3dCfVlVk",
@@ -21,7 +22,7 @@ const auth = getAuth(app)
 auth.currentUser == null && push("/login")
 
 const deleteUserScore = () => {
-    auth.currentUser != null && deleteCollectionDocs("userscores")
+    auth.currentUser != null && deleteCollectionDocs(familyVersion ? "userscores-family" : "userscores")
 }
 
 const deleteErrorLogs = () => {

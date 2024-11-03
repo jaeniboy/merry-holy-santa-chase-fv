@@ -6,6 +6,7 @@
     import Retry from "./Retry.svelte"
     import {initializeApp} from "firebase/app";
     import {getFirestore, addDoc, collection, getDocs} from "firebase/firestore"
+    import {familyVersion} from "./config.js"
 
     const firebaseConfig = {
         apiKey: "AIzaSyBpOgtLkUIXsLaHmqZHoqVV_0D3dCfVlVk",
@@ -18,7 +19,8 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-
+  
+    const dataCollection = familyVersion ? "userscores-family" : "userscores"
     const name = get(PlayerName)
     const count = get(CountStore) 
     const scoreSaved = get(ScoreInDb)
@@ -28,7 +30,7 @@
     const getDataFromDb = async () => {
 
         // get scores from database
-        const querySnapshot = await getDocs(collection(db, "userscores"));
+        const querySnapshot = await getDocs(collection(db, dataCollection));
         const userScores = querySnapshot.docs.map((d) => {
             const response = d.data()
             if (d.id === scoreID) {response.new = true};
@@ -49,7 +51,7 @@
 
         // write game result to database if not exists and name value not empty
         if (gameResult.name !== "" && !scoreSaved) {
-            const docRef = await addDoc(collection(db, "userscores"), {...gameResult, "new": false})
+            const docRef = await addDoc(collection(db, dataCollection), {...gameResult, "new": false})
             ScoreID.set(docRef.id)
             console.log("Game result written to database with ID: ", docRef.id);
             ScoreInDb.set(true)
