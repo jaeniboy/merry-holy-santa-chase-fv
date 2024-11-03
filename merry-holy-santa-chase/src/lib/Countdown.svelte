@@ -2,7 +2,7 @@
     import {push} from 'svelte-spa-router'
     import {onMount, onDestroy} from 'svelte'
 
-    let time = 1000*10//120;
+    let time = 1000*120;
     let interval = 1000;
     let running = true;
         
